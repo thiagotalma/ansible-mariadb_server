@@ -27,6 +27,12 @@ mariadb_server_flavor: '{{ (ansible_local.mariadb.flavor
                             else (mariadb_server_flavor_map[ansible_distribution_release] | default("mariadb"))) }}'
 
 
+# .. envvar:: mariadb_server_version
+#
+# Version to be installed
+mariadb_server_version: '10.1'
+
+
 # .. envvar:: mariadb_server_base_packages
 #
 # List of APT packages that should be installed with any database engine

@@ -29,6 +29,23 @@
     update_cache: True
   when: mariadb_server_flavor in [ 'percona' ]
 
+- name: Add MariaDB APT GPG key
+  apt_key:
+    state: 'present'
+    id: '0xcbcb082a1bb943db'
+    keyserver: '{{ ansible_local.core.keyserver
+                   if (ansible_local|d() and ansible_local.core|d() and
+                       ansible_local.core.keyserver|d())
+                   else "hkp://keyserver.ubuntu.com:80" }}'
+  when: mariadb_server_flavor in [ 'mariadb' ]
+
+- name: Add MariaDB APT repository
+  apt_repository:
+    repo: 'deb [arch=amd64,i386] http://nyc2.mirrors.digitalocean.com/mariadb/repo/{{ mariadb_server_version }}/ubuntu {{ ansible_distribution_release }} main'
+    state: 'present'
+    update_cache: True
+  when: mariadb_server_flavor in [ 'mariadb' ]
+
 - name: Install database server packages
   apt:
     name: '{{ item }}'

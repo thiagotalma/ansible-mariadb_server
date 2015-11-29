@@ -1,0 +1,8 @@
+---
+
+# Install packages
+- name: Add official MariaDB apt key
+  apt_key: id={{mariadb_server_repo_key_id}} keyserver={{mariadb_server_repo_key_url}} state=present
+
+- name: Setup official MariaDB repository
+  apt_repository: repo="{{mariadb_server_repo}}" state=present update_cache=yes

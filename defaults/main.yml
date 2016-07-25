@@ -48,7 +48,7 @@ mariadb_server__flavor_map:
 # different MariaDB/MySQL/Percona APT repositories. These GPG keys will be
 # downloaded if any of the listed flavors is selected.
 mariadb_server__apt_key_map:
-  'mariadb_upstream': '199369E5404BD5FC7D2FE43BCBCB082A1BB943DB'
+  'mariadb_upstream': '0xF1656F24C74CD1D8'
   'percona':          '430BDF5C56E7C94E848EE60C1C4CBDCDCD2EFD2A'
 
 
